@@ -1,0 +1,56 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	int a[]=new int[100];
+	int top=-1;
+	public void push(int k)
+	{
+		if(top<100)
+		a[++top]=k;
+		else
+		System.out.println("STACK OVERFLOW");
+	}
+	
+	public void pop()
+	{
+		// if(top>0)
+		// a[top--];
+		// else
+		
+		if(top>0)
+		{
+		int x=a[top--];
+	
+		}
+		else
+		System.out.println("UNDERLFOW NO ELEMENTS IN STACK");
+	}
+     
+    public void display()
+    {
+    	for(int i=0;i<=top;i++)
+    	System.out.println(a[i]);
+    }
+    
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+	Ideone id=new Ideone();
+	id.push(10);
+	id.push(12);
+	id.push(13);
+	id.push(14);
+	id.pop();
+	id.push(15);
+	id.display();
+		
+		
+		
+	}
+}
