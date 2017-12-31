@@ -1,0 +1,35 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	int top=-1;
+	public void reverse(String s)
+	{
+		String output="";
+		char[] out=new char[s.length()];
+		for(int i=0;i<s.length();i++)
+		{
+		//Pushing elements into stack
+			out[++top]=s.charAt(i);
+		}
+		for(int i=0;i<s.length();i++)
+		{
+			//poping all elements and adding to String
+		output=output+out[top--];	
+		}
+		//Displaying output
+		System.out.println(output);
+	}
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+	Ideone i=new Ideone();
+	i.reverse("SANJAY");
+		
+	}
+}
