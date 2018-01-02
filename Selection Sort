@@ -1,0 +1,35 @@
+package selectionsort;
+
+public class selectionsort {
+
+	public static void main(String args[])
+	{
+		
+		int a[]= {12,14,5,19,123,15,7889};
+		int minindex=0,min;
+		
+		for(int k=0;k<a.length-1;k++)
+	{
+			min=a[k];
+			//FINDING THE MINIMUM ELMENT
+	      for(int i=k;i<a.length;i++)
+     	  {
+	           if(min>a[i])
+	        {
+	            	   min=a[i];
+	                   minindex=i; 
+	        }  
+	      }
+	      //SWAPPING THE MINIMUM WITH THE ORDER
+	      int temp=a[k];
+	 a[k]=min;
+	 a[minindex]=temp;
+	
+	}
+	for(int i=0;i<a.length;i++)
+		System.out.println(a[i]);
+	  }
+	
+	
+	
+}
