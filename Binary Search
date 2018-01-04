@@ -1,0 +1,39 @@
+package binarysearch;
+
+public class binarysearch {
+
+	void search(int a[],int start,int end,int x)
+	{
+		int mid=(start+end)/2;
+		if(start<end && x<=a[end])
+		{
+		if(x==a[mid] || x==a[start] || x==a[end])
+		{
+			System.out.println("Element Found");
+		
+		}
+		else if(x<a[mid])
+		 {
+			search(a,0,mid-1,x);
+		 }
+		  else
+	    	{
+		    	search(a,mid+1,end,x);
+		    }
+		}	 
+		else
+		{
+			System.out.println("NO ELEMENT FOUND");
+		}
+	    
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int [] a= {2,6,13,21,36,47,63,81,97};
+		binarysearch b=new binarysearch();
+		b.search(a, 0, a.length-1,17);
+	}
+
+}
