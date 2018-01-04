@@ -1,0 +1,47 @@
+package LCS;
+
+public class lcs {
+ 
+	 void common(String a,String b)
+	 {
+		 int [][] out=new int[a.length()][b.length()];
+		 //Setting first row and column all Zeros
+		 String common="";
+		 for(int i=0;i<a.length();i++)
+			 out[i][0]=0;
+		 for(int i=0;i<b.length();i++)
+			 out[0][i]=0;
+		 for(int i=1;i<out[i].length;i++)
+		 {
+			 for(int j=1;j<out[j].length;j++)
+			 {
+				 //No match
+			   if(b.charAt(j-1)!=a.charAt(i-1))
+			   {
+				out[i][j]=Math.max(out[i-1][j],out[i][j-1]);   
+			   }
+			   //If matches
+			   else
+			   {
+				out[i][j]=out[i-1][j-1]+1;   
+		//		common=common+a.charAt(i-1);
+			   }
+			 }
+		 }
+		 
+		 for (int i = 0; i < a.length(); i++)
+		 {
+	            // Loop through all elements of current row
+	            for (int j = 0; j < b.length(); j++)
+	                System.out.print(out[i][j] + " ");
+		 System.out.println();
+		 }
+		// System.out.println(common);
+	 }
+	public static void main(String[] args) {
+		String b="bqdrcvefgh";
+		String a="abcvdefgh";
+		lcs l=new lcs();
+		l.common(a,b);
+	}
+}
