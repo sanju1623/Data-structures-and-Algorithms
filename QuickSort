@@ -1,0 +1,49 @@
+package Quicksort;
+
+public class quicksort {
+
+	void quickSort(int [] a,int start,int end)
+	  {
+		
+		if(start<end)
+		{
+			int pindex=partition(a,start,end);
+			//Recursive calling
+		    quickSort(a,start,pindex-1);
+			quickSort(a,pindex+1,end);
+		}
+		
+		
+	  }
+	 int partition (int [] a,int start,int end)
+	 {
+		 int pivot=a[end];
+		 int pindex=0;
+		 
+		 for(int i=0;i<end;i++)
+		 {
+			 if(a[i]<pivot)
+			 {
+				 // swap pindex and a[i]
+				int temp=a[i];
+				a[i]=a[pindex];
+				a[pindex]=temp;
+			    //increment pindex
+				pindex++;
+			 }
+		 }
+		 //swap pindex and pivot
+		 int temp=a[pindex];
+		 a[pindex]=pivot;
+		 a[end]=temp;
+	   	 return pindex;
+	 }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	    int [] a= {79,72,11,56,38,15,31,4};
+	   quicksort q=new quicksort();
+	    q.quickSort(a,0,a.length-1);
+		  for(int k=0;k<a.length;k++)
+			  System.out.println(a[k]);
+	}
+}
