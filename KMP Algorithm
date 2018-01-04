@@ -1,0 +1,76 @@
+package KMP;
+
+public class kmp {	
+	  void checkpattern(String a,String b)
+	  {
+		  int [] p=new int[a.length()];
+		  int i=1,j=0;
+		  p[0]=0;
+		  while(i<a.length())
+		  {
+			  if(j==0)
+			  {
+				  if(a.charAt(i)!=a.charAt(j))
+				  {
+					  p[i]=0;
+					  ++i;
+				  }
+				  else
+				  {
+					  p[i]=j+1;
+					  i++;
+					  j++;
+				  }
+			  }
+			  else
+			  {
+				  //j greater than 0
+				   if(a.charAt(i)==a.charAt(j))
+				   {
+					   p[i]=j+1;
+					   i++;
+					   j++;
+				   }
+				   else
+				   {
+				j=p[j-1];
+				   }
+			  }
+		  }  
+	
+		int text=0,pat=0;
+		for(int m=0;m<b.length();m++)
+		{
+		
+			if(a.charAt(pat)==b.charAt(m))
+			{
+				pat++;
+			
+			}
+			else 
+			{
+				if(pat>0)
+				{
+					pat=p[pat-1];
+				m--;
+				}
+			}
+			if(pat==a.length())
+			{
+			text++;
+				System.out.println("pattern Matched");
+				break;
+			}
+	}
+		if(text==0)
+			System.out.println("pattern NOT Matched");
+		
+		
+	  }
+	public static void main(String[] args) {
+		String k="abcaby";
+		kmp kmp1=new kmp();
+		String check="abxabcabcaybh";
+		kmp1.checkpattern(k,check);
+	}
+}
