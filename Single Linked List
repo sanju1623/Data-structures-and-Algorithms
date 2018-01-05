@@ -1,0 +1,75 @@
+package Linkedlist;
+public class linkedlist {
+	Node head;
+	static class Node
+	{
+		int data;
+		Node next;
+		Node(int d)
+		{
+			data=d;
+			next=null;
+		}
+	}
+	void insertfirst(int p)
+	{
+		Node a=head;
+		Node q=new Node(p);
+		q.next=head;
+		head=q;
+	    System.out.println("after inserting node at front");
+	}
+	void deletenode(int p)
+	{
+		System.out.println("asd");
+		Node a=head;
+		Node prev=a;
+		if(a.data==p)
+		{
+			Node temp=a.next;
+		 a.next=head;
+		 head=temp; 
+		}
+		else
+		{
+		while(a!=null)
+		 { 
+			if(a.data==p)
+			{
+				Node temp=a;
+				//System.out.println(prev.data);
+				prev.next=a.next;
+			}
+			prev=a;
+			a=a.next;
+		 }
+		}
+	}
+	
+	void printlist()
+	{
+		Node a=head;
+		while(a!=null)
+		{
+	     System.out.println(a.data);
+	     a=a.next;
+		}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		linkedlist l=new linkedlist();
+		l.head=new Node(5);
+	    Node a=new Node(6);
+	    Node b=new Node(7);	    
+	    l.head.next=a;
+	    a.next=b;
+	    b.next=null;
+	    l.printlist();
+        l.insertfirst(4);
+        l.printlist();
+       l.deletenode(6);
+      l.printlist();
+	}
+
+}
