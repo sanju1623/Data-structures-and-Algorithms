@@ -1,4 +1,7 @@
 package Linkedlist;
+
+import java.util.Stack;
+
 public class linkedlist {
 	Node head;
 	static class Node
@@ -46,6 +49,33 @@ public class linkedlist {
 		}
 	}
 	
+	
+	//Reverse linkedlist using stack
+	
+	void reverse()
+	{
+		Stack<Node>a=new Stack<Node>();
+		Node l=head;
+		while(l!=null)
+		{
+			a.push(l);
+			l=l.next;
+		}
+		System.out.println("After reversing");
+		Node temp=a.peek();
+		head=temp;
+		a.pop();
+		while(!a.empty())
+		{
+			temp.next=a.peek();
+			a.pop();
+			temp=temp.next;
+		}
+		temp.next=null;
+		
+	}
+	
+	
 	void printlist()
 	{
 		Node a=head;
@@ -68,8 +98,10 @@ public class linkedlist {
 	    l.printlist();
         l.insertfirst(4);
         l.printlist();
-       l.deletenode(6);
-      l.printlist();
+        l.deletenode(6);
+        l.printlist();
+       l.reverse();
+        l.printlist();
 	}
 
 }
