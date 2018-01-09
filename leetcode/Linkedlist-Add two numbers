@@ -1,0 +1,78 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        
+        if(l1==null)
+        return l2;
+        else if(l2==null)
+            return l1;
+        Stack<Integer>a=new Stack<Integer>();
+        Stack<Integer>b=new Stack<Integer>();
+        Stack<Integer>c=new Stack<Integer>();
+        
+        ListNode temp1=l1,temp2=l2;
+        while(temp1!=null)
+        {
+            a.push(temp1.val);
+            temp1=temp1.next;
+        }
+        while(temp2!=null)
+        {
+            b.push(temp2.val);
+            temp2=temp2.next;
+        }
+        int k1=Math.max(a.size(),b.size()),extra=0,last=0,done=0;
+ListNode m=new ListNode(0);
+        ListNode output,n,b1=m,k;
+        while(!a.empty() || !b.empty())
+        {
+             k1=0;
+            if(!a.empty())
+                k1=k1+a.pop();
+            if(!b.empty())
+                k1=k1+b.pop();
+            if(k1/10==1)
+            {
+                if((k1%10+extra)/10==1)
+                    c.push((k1%10+extra)%10);
+                    else 
+                c.push(k1%10+extra);
+                extra=1;
+            }
+            else
+            {       
+                if(k1+extra>9)
+                {
+                c.push((k1+extra)%10);
+                extra=1;
+                }
+                else
+                {
+               c.push(k1+extra);     
+                extra=0;
+                }
+            }
+        }
+        
+        if(extra==1)
+        c.push(extra);
+        
+        while(!c.empty())
+        {
+             output=m;
+        k=new ListNode(c.pop());
+            output.next=k;
+            m=k;
+    k.next=null;
+        }
+        
+        return b1.next;
+  }
+}
