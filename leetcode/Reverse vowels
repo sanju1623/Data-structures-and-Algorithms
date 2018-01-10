@@ -1,0 +1,36 @@
+class Solution {
+    public String reverseVowels(String s) {
+        Stack<Character>a=new Stack<Character>();
+        StringBuilder out = new StringBuilder(s);
+
+        if(s.length()<2)
+            return s;
+        int i=0,j=s.length()-1;
+        while(i<j)
+        {
+            if((s.charAt(i)=='a' || s.charAt(i)=='e'||s.charAt(i)=='i'||s.charAt(i)=='o'||s.charAt(i)=='u' || s.charAt(i)=='A' || s.charAt(i)=='E'||s.charAt(i)=='I'||s.charAt(i)=='O'||s.charAt(i)=='U' ) && 
+              (s.charAt(j)=='a' || s.charAt(j)=='e'||s.charAt(j)=='i'||s.charAt(j)=='o'||s.charAt(j)=='u' || s.charAt(j)=='A' || s.charAt(j)=='E'||s.charAt(j)=='I'||s.charAt(j)=='O'||s.charAt(j)=='U')
+              )
+            {
+         
+              char l=s.charAt(i);
+                out.setCharAt(i,s.charAt(j));
+                out.setCharAt(j,l);
+                i++;
+                j--;
+            }
+               else if((s.charAt(i)!='a' && s.charAt(i)!='e' && s.charAt(i)!='i' && s.charAt(i)!='o'&& s.charAt(i)!='u' && s.charAt(i)!='A' && s.charAt(i)!='E'&& s.charAt(i)!='I'&& s.charAt(i)!='O'&& s.charAt(i)!='U'))
+                {
+                 i++;   
+                }
+            else
+            {
+                j--;
+            }
+        }
+        
+        System.out.println(out);   
+        
+        return out.toString();
+    }
+}
