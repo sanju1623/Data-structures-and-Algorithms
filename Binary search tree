@@ -1,0 +1,151 @@
+package BST;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
+
+class bst {
+
+	class Node {
+		int key;
+		Node left, right;
+		public Node(int item) {
+			key = item;
+			left = right = null;
+		}
+	}
+
+	Node root;
+    
+	bst() { 
+		root = null; 
+	}
+
+	void insert(int key) {
+	root = insertRec(root, key);
+	}
+	
+	Node insertRec(Node root, int key) {
+
+		/* If the tree is empty, return a new node */
+		if (root == null) {
+			root = new Node(key);
+			return root;
+		}
+
+		/* Otherwise, recur down the tree */
+		if (key < root.key)
+			root.left = insertRec(root.left, key);
+		else if (key > root.key)
+			root.right = insertRec(root.right, key);
+
+		/* return the (unchanged) node pointer */
+		return root;
+	}
+
+	// This method mainly calls InorderRec()
+	void inorder() {
+	inorderRec(root);
+	}
+
+	// A utility function to do inorder traversal of BST
+	void inorderRec(Node root) {
+		if (root != null) {
+			inorderRec(root.left);
+			System.out.println(root.key);
+			inorderRec(root.right);
+		}
+	}
+
+	 void findsize()
+	{
+int k=size(root);
+System.out.println("Size is "+k);
+int l=height(root);
+System.out.println("Height is "+l);
+System.out.println(findsum(root, 20));
+	}	
+	
+	int size(Node root)
+	{
+		if(root == null)
+			return 0;
+		
+		int left=size(root.left);
+		int right=size(root.right);
+		return left+right+1;
+	}
+
+	
+
+	void check()
+	{
+		System.out.println("ASA");
+		System.out.println(checkbinary(root, 10000, -10000));
+	}
+
+    boolean checkbinary(Node root,int upper,int lower)
+    {
+    	if(root==null)
+    		return true;
+    	if(root.key<upper && root.key>=lower)
+    	{
+    		boolean a=checkbinary(root.left,root.key,-10000);
+    	if(a)
+    		return true;
+    		boolean b=checkbinary(root.right, 123456, root.key);
+    		if(b)
+    			return true;
+    	}
+    	else
+    		return false;
+    	return false;
+    }
+
+	
+	
+	int height(Node root)
+	{
+
+		int left=size(root.left);
+		int right=size(root.right);
+		return 1+Math.max(left,right);
+	}
+	boolean findsum(Node root,int x)
+	{
+	if(root==null)
+		return false;
+		if(root.left==null && root.right==null)
+		{
+			if(root.key==x)
+				return true;
+			else
+				return false;
+		}
+		boolean a=findsum(root.left,x-root.key);
+		if(a)
+			return true;
+		boolean b=findsum(root.right,x-root.key);
+		if(b)
+			return true;
+		return false;
+	}
+	
+	
+	
+	public static void main(String[] args) {
+bst tree = new bst();
+		tree.insert(50);
+		tree.insert(30);
+		tree.insert(20);
+		tree.insert(40);
+		tree.insert(70);
+		tree.insert(60);
+		tree.insert(80);
+tree.findsize();
+tree.check();
+	}
+}
