@@ -105,7 +105,29 @@ System.out.println(findsum(root, 20));
     	return false;
     }
 
-	
+
+    void showmaxandmin()
+    {
+    displayminandmax(root);
+    }
+    
+    private void displayminandmax(Node root) {
+		// TODO Auto-generated method stub
+
+    	Node temp=root;
+    	while(root.left!=null)
+    	{
+    		root=root.left;
+    	}
+    	System.out.println("Minimum element in BST "+root.key);
+    	while(temp.right!=null)
+    		temp=temp.right;
+    	System.out.println("Max in BST "+temp.key);
+    	
+	}
+
+    
+    
 	
 	int height(Node root)
 	{
@@ -147,5 +169,6 @@ bst tree = new bst();
 		tree.insert(80);
 tree.findsize();
 tree.check();
+tree.showmaxandmin();
 	}
 }
