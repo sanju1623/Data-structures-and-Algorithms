@@ -1,0 +1,37 @@
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        
+        
+        int start=-1,end=-1;
+        int x=0,y=0;
+        int [] a=new int[2];
+        
+        if(nums.length==0 || nums[0]>target || nums[nums.length-1]<target)
+        {
+        a[0]=-1;
+            a[1]=-1;
+            return a;
+        }
+        
+        
+        while(y<nums.length && x<nums.length)
+        {
+            if(nums[y]>target)
+                break;
+            if(nums[x]==target)
+            {
+                start=x;
+            }
+            else
+                x++;
+            
+                if(nums[y]==target)
+                end=y;
+                y++;
+        }
+        a[0]=start;
+        a[1]=end;
+        
+    return a;
+    }
+}
