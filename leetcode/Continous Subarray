@@ -1,0 +1,27 @@
+class Solution {
+    public boolean checkSubarraySum(int[] nums, int k) {
+ int out=0;
+        if(k==0 && nums.length==1 && nums[0]==0)
+            return false;
+        
+        if(k==0)
+        {
+            for(int i=0;i<nums.length;i++)
+                if(nums[i]!=0)
+                    return false;
+            return true;
+        }
+            
+        for(int i=0;i<nums.length;i++)
+        {
+            out=nums[i];
+            for(int j=i+1;j<nums.length;j++)
+            {
+                out=out+nums[j];
+                if(out%k==0)
+                    return true;
+            }
+        }
+        return false;
+    }
+}
