@@ -1,0 +1,19 @@
+class Solution {
+    public int reverse(int num) {
+     int p=1,temp=0,k=0,neg=0;
+        if(num<0)
+        {
+            neg=1;
+            num=num*(-1);
+        }
+       while(num>0)
+       {
+           p=num%10;
+        k=k*10+p;
+        num=num/10;   
+       }
+        if(neg==1)
+        k=k*-1;
+        return k;
+    }
+}
