@@ -1,0 +1,32 @@
+class Solution {
+    public int maximumSwap(int num) {
+    
+        String a1 = Integer.toString(num);
+        char b[] = a1.toCharArray();
+        char a[]=a1.toCharArray();
+        Arrays.sort(b); 
+        int k=0,imp=0;
+        String m="";
+        for(int i=b.length-1;i>=0;i--)
+         {
+           if(b[i]!=a[k])
+           {
+             int pos=a1.indexOf(b[i]);
+               for(int q=k+1;q<a.length;q++)
+               {
+                   if(a[q]==b[i])
+                   {
+                       imp=q;  
+                   }   
+            }
+               char ch=a[k];
+               a[k]=a[imp];
+               a[imp]=ch;
+           break;
+           }
+            k++;
+         }
+String out = new String(a);
+        return Integer.parseInt(out);
+    }
+}
