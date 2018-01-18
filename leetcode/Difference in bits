@@ -1,0 +1,31 @@
+class Solution {
+    public int hammingDistance(int x, int y) {
+        
+        
+        String p="";
+        String q="";
+        for(int i=0;i<32;i++)
+        {
+            if(x%2 == 1)
+                p='1'+p;
+            else
+                p='0'+p;
+        x=x/2;
+        }
+         for(int i=0;i<32;i++)
+        {
+            if(y%2 == 1)
+                q='1'+q;
+            else
+                q='0'+q;
+        y=y/2;
+         }
+        int out=0;
+        if(p.equals(q))
+            return 0;
+        for(int i=0;i<32;i++)
+            if(p.charAt(i)!=q.charAt(i))
+                out++;
+        return out;
+    }
+}
