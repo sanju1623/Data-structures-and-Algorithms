@@ -1,0 +1,56 @@
+class Solution {
+    public int maxProduct(int[] nums) {
+        int i=0,p=1,r=0,h=1,last=0,number=-1520,out=0;
+        if(nums.length==0)
+            return out;
+        else if(nums.length==1)
+            return nums[0];
+        int there=0;
+        for(int q=0;q<nums.length;q++)
+        {
+            if(nums[q]<0)
+            {
+                r++; 
+                last=q; 
+            }
+            if(nums[q]==0){
+                there=1;
+            }            
+            h=h*nums[q];
+        }
+        if(there==1 || r==1)
+             {
+                     while(i<nums.length)
+                      {
+                       int m=1;
+                     for(int n=i;n<nums.length;n++)
+                       {
+                          m=m*nums[n];
+                           out=Math.max(out,m);
+                            if(m==0 )
+                               m=1;
+                         }
+                         i++;
+                        }      
+                      return out;              
+             }
+        if(r%2==0)
+        return h;
+        else
+        {
+        int first=0,g=1;
+            for(int j=0;j<last;j++)
+                if(nums[j]<0)
+                {
+                    first=j;
+                    break;
+                }
+            for(int w=0;w<last;w++)
+            g=g*nums[w];
+            for(int w=first+1;w<nums.length;w++)
+             p=p*nums[w];  
+        //    System.out.println(p);
+            return Math.max(g,p);
+        }    
+    }
+}
