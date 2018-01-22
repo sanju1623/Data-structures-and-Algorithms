@@ -1,0 +1,28 @@
+class Solution {
+    public int strStr(String haystack, String needle) {
+        int i=0,j=haystack.length(),p=0,out=0;
+ 
+        if(haystack.equals(needle) || needle.length()<1 )
+            return 0;
+        if(haystack.length()<needle.length() || haystack.length()<1)
+            return -1;
+        if(needle.length()==1 && haystack.contains(needle))
+            return haystack.indexOf(needle.charAt(0));
+           else  if((needle.length()==1 && (!haystack.contains(needle)))  || (!haystack.contains(needle)) )
+            return -1;
+ 
+        
+        while(i<j)
+        {
+            for(p=i+1;p<j;p++)
+            {
+              //  System.out.println(haystack.substring(i,p+1));
+                if(haystack.substring(i,p+1).equals(needle))
+                    return i;
+            }
+            i++;
+        }      
+        
+        return -1;
+    }
+}
