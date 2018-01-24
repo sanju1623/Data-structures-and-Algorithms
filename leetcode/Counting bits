@@ -1,0 +1,25 @@
+class Solution {
+    public int[] countBits(int num) {
+        
+        int []nums=new int[num+1];
+        
+        nums[0]=0;
+        if(num>0)
+        nums[1]=1;
+        if(num>1)
+        nums[2]=1;
+        if(num>2)
+        nums[3]=2;
+        
+        int temp=0,temp2=0;
+        for(int i=4;i<=num;i++)
+        {
+            
+             temp=i/4;
+              temp2=i%4;
+        nums[i]=nums[temp]+nums[temp2];
+        
+        }
+        return nums;
+    }
+}
