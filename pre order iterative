@@ -1,0 +1,62 @@
+// non-recursive java program for inorder traversal
+
+/* importing the necessary class */
+import java.util.Stack;
+
+/* Class containing left and right child of current 
+node and key value*/
+class Node {
+
+	int data;
+	Node left, right;
+
+	public Node(int item) {
+		data = item;
+		left = right = null;
+	}
+}
+
+/* Class to print the inorder traversal */
+class BinaryTree {
+
+	Node root;
+
+	void inorder() {
+		if (root == null) {
+			return;
+		}
+		//keep the nodes in the path that are waiting to be visited
+		Stack<Node> stack = new Stack<Node>();
+		Node node = root;
+stack.push(node);
+		// traverse the tree
+		while (stack.size() > 0) {
+		      Node temp=stack.pop();
+		      System.out.print(temp.data);
+		      System.out.print(" ");
+		      if(temp.right!=null)
+		      {
+		          stack.push(temp.right);
+		      }
+		       if(temp.left!=null)
+		           {
+		            stack.push(temp.left);   
+		           }
+			}
+		 }
+	
+
+	public static void main(String args[]) {
+		
+		/* creating a binary tree and entering 
+		the nodes */
+		BinaryTree tree = new BinaryTree();
+		tree.root = new Node(10);
+        tree.root.left = new Node(8);
+        tree.root.right = new Node(2);
+        tree.root.left.left = new Node(3);
+        tree.root.left.right = new Node(5);
+        tree.root.right.left = new Node(2);
+		tree.inorder();
+	}
+}
