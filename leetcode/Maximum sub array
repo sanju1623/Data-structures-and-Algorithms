@@ -1,0 +1,23 @@
+class Solution {
+    public int minSubArrayLen(int s, int[] nums) {
+        int left=0;
+        int output=123456,p=0;
+        int sum=0;
+        while(left<nums.length)
+        {
+            sum=sum+nums[left];
+            while(sum>=s && p<nums.length)
+            {
+                sum=sum-nums[p];
+                output=Math.min(output,left-p+1);
+                p++;
+            }
+          left++;  
+        }
+        
+        if(output==123456)
+        return 0;
+        
+return output;
+    }
+}
