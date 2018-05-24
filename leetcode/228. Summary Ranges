@@ -1,0 +1,44 @@
+class Solution {
+    public List<String> summaryRanges(int[] nums) {
+       int i=0,j=i+1;
+        int check=-1;
+        List<String>output=new ArrayList<>();
+       if(nums.length==0)
+           return output;
+        while(j<nums.length){
+            if(nums[i]+1==nums[j]){
+            if(check==-1)
+                check=i;
+            }
+            else{
+                if(check!=-1 && j-check>0){
+                    String temp=String.valueOf(nums[check])+"->"+String.valueOf(nums[j-1]);
+                    output.add(temp);
+                }
+                else{
+                    if(check==-1)
+                    output.add(String.valueOf(nums[i]));
+                    else
+                    output.add(String.valueOf(nums[j]));
+                        
+                }
+                check=-1; 
+            }
+                i++;
+                j=i+1;
+            
+        }
+        
+        //FOR LAST SEGMENT 
+        if(check==-1){
+            output.add(String.valueOf(nums[nums.length-1]));
+        }
+        else{
+                    String temp=String.valueOf(nums[check])+"->"+String.valueOf(nums[nums.length-1]);
+                    output.add(temp);   
+        }
+        
+        return output;
+    }
+    
+}
