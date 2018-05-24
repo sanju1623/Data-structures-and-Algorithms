@@ -1,0 +1,21 @@
+class Solution {
+    public void rotate(int[] nums, int k) {
+        //NOT OPTIMAL SOLUTION
+ int temp=0,p=k;
+        
+        if(nums.length<k)
+            p=k%nums.length;
+        else
+            p=k;
+        System.out.println(nums.length);
+        
+        if(k!=0)
+        for(int i=0;i<p;i++){
+            temp=nums[nums.length-1];
+            for(int j=nums.length-1;j>0;j--){
+                 nums[j]=nums[j-1];
+            }
+            nums[0]=temp;
+        }
+    }
+}
