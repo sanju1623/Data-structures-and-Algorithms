@@ -19,3 +19,35 @@ class Solution {
         }
     }
 }
+
+
+
+-------------------------------------------------------------------------------------------------------
+//Optimal solution
+class Solution {
+ 
+//     Approach:-  first reverse all and reverse from k to remaining and from 0 to k-1
+//     for reversing use the login with temp till it comes middle.    
+    
+
+    
+public void rotate(int[] nums, int k) {
+if(k!=0 && nums.length>0)
+{
+    k %= nums.length;
+    reverse(nums, 0, nums.length - 1);
+    reverse(nums, k, nums.length - 1);
+    reverse(nums, 0, k-1);
+}
+}
+
+public void reverse(int[] nums, int start, int end) {
+    while (start < end) {
+        int temp = nums[start];
+        nums[start] = nums[end];
+        nums[end] = temp;
+        start++;
+        end--;
+    }
+}
+}
