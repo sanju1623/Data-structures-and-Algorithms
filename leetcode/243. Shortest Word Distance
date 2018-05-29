@@ -32,9 +32,38 @@ class Solution {
             for(int j=0;j<second.size();j++){
                 output=Math.min(output,Math.abs(first.get(i)-second.get(j)));
             }
-        }
-        
-        
+        } 
         return output;
     }
 }
+-------------------------------------------------------------------------------
+
+Optimal solution referred logic from discussions
+
+approach :-find the minimum between store the indexes whenever you find the words.
+
+class Solution {
+    public int shortestDistance(String[] words, String word1, String word2) {
+        int i=0;
+        int first=-1;
+        int second=-1;
+        int output=Integer.MAX_VALUE;
+     
+        for(i=0;i<words.length;i++){
+            if(words[i].equals(word1)){
+                first=i;
+            }
+            if(words[i].equals(word2)){
+                second=i;
+            }
+            
+           if(first!=-1 && second!=-1)
+                output=Math.min(output,Math.abs(first-second));
+            
+        }       
+        return output;
+    }
+}
+
+
+
