@@ -1,0 +1,25 @@
+Approach :- Create a temp row and intialize the temp with length -i value of inveted value.
+Its optimal solution.
+
+class Solution {
+    public int[][] flipAndInvertImage(int[][] A) {
+     int p=0;
+        int[] temp=new int[A[0].length];
+        for(int i=0;i<A.length;i++){
+            p=A[0].length-1;
+            for(int j=0;j<A[0].length;j++){
+                if(A[i][j]==0){
+                    temp[p-j]=1;
+                }
+                else
+                    temp[p-j]=0;
+            } 
+            for(int k=0;k<A[i].length;k++)
+            {
+                A[i][k]=temp[k];
+            }
+        }
+        
+    return A;
+    }
+}
