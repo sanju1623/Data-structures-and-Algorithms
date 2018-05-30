@@ -1,0 +1,36 @@
+
+Approach:- Not optimal store the elments in hash and after sorting store them in array list and fetch
+
+
+------------------------------------------------------------------------------------
+class Solution {
+    public String[] findRelativeRanks(int[] nums) {
+        Map<Integer,Integer>temp=new HashMap<>();
+        List<Integer>temp2=new ArrayList<>();
+        for(int i=0;i<nums.length;i++){
+            temp.put(i,nums[i]);
+        }
+        Arrays.sort(nums);
+        for(int i=0;i<nums.length;i++){
+            temp2.add(nums[i]);
+        }
+        String[] output=new String[nums.length];
+        int t=nums.length;
+        for(int i=0;i<temp.size();i++){
+            
+           if(temp.get(i)==nums[nums.length-1]){
+               output[i]="Gold Medal";
+           }
+            else if(temp.get(i)==nums[nums.length-2]){
+               output[i]="Silver Medal";
+           }
+            else if(temp.get(i)==nums[nums.length-3]){
+               output[i]="Bronze Medal";
+           }
+            else{
+                output[i]=String.valueOf(t-temp2.indexOf(temp.get(i)));
+            }
+        }
+        return output;
+    }
+}
