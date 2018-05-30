@@ -31,3 +31,28 @@ class Solution {
         return max;
     }
 }
+
+
+----------------------------------------------------------------------
+//optimal O(n)
+class Solution {
+    
+    // approach keep the track of prev and that before one and subtract
+    // try to solve on paper mathematically will be easy.
+    //referred from discussions
+    
+    
+    public int findMaxConsecutiveOnes(int[] nums) {
+    int prev=-1,cur=-1,max=0,i=0;
+        for(i=0;i<nums.length;i++){
+            if(nums[i]==0){
+            max=Math.max(max,i-prev-1);
+                prev=cur;
+                cur=i;
+            }
+            
+        }
+        
+            return Math.max(max,i-prev-1);
+    }
+}
