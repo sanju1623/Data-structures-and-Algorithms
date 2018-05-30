@@ -1,0 +1,46 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+
+/*
+Approach:- store all the address in the list and iterate them
+or else for optimal solution chcek the last non nine digt and make remaining 0 if dummy that is 
+firt digit is 0 then add new node;
+*/
+
+class Solution {
+    public ListNode plusOne(ListNode head) {
+        ListNode temp=head;
+        List<ListNode>list=new ArrayList<>();
+        while(head!=null)
+        {
+            list.add(head);
+        head=head.next;
+        }
+        int m=list.size()-1;
+            while(m>=0){
+                if(list.get(m).val==9){
+                    list.get(m).val=0;
+                }
+                else{
+                     list.get(m).val=list.get(m).val+1;
+                break;
+                }
+                m--;
+            }
+            
+        if(list.get(0).val==0)
+        {
+            ListNode p=new ListNode(1);
+            p.next=temp;
+            return p;
+        }
+        
+        return temp;
+    }
+}
