@@ -1,0 +1,32 @@
+
+
+//approach - we have to check the nums[i-2] also so if nums[i-2]<=nums[i] then decrease nums[i-1]
+// check if it is first then decrease nums[i-1]
+
+
+class Solution {
+    public boolean checkPossibility(int[] nums) {
+    
+        int temp=0;
+        for(int i=1;i<nums.length;i++){
+            if(nums[i-1]>nums[i] && temp==0)
+            {
+                temp++;
+                if(i-1==0){
+                    nums[i-1]=nums[i];
+                } 
+                else
+                {
+                    if (nums[i - 2] <= nums[i])
+                        nums[i - 1] = nums[i]; // decrease nums[i - 1]
+                    else 
+                        nums[i] = nums[i - 1]; // increase nums[i]
+                }
+            }
+            else if(nums[i-1]>nums[i] && temp>0)
+                return false;
+        }
+        
+        return true;
+    }
+}
