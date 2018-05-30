@@ -1,0 +1,65 @@
+class Solution {
+    public String[] findWords(String[] words) {
+        String first="qwertyuiop";
+        String second="asdfghjkl";
+        String third="zxcvbnm";
+       List<Integer>l=new ArrayList<>();     
+        for(int i=0;i<words.length;i++){
+         int temp=0;
+            if(first.contains(""+Character.toLowerCase(words[i].charAt(0))))
+            {
+                for(int j=0;j<words[i].length();j++){
+                if(first.contains(""+Character.toLowerCase(words[i].charAt(j))))
+                {
+                   temp++; 
+                }
+                    
+                    else{
+                        temp=0;
+                        break;}
+             }
+                if(temp==words[i].length())
+                    l.add(i);
+            }
+            else  if(second.contains(""+Character.toLowerCase(words[i].charAt(0))))
+            {
+                temp=0;
+                for(int j=0;j<words[i].length();j++){
+                if(second.contains(""+Character.toLowerCase(words[i].charAt(j))))
+                {
+                   temp++; 
+                }
+                    else{
+                        temp=0;
+                        break;}
+                    
+             }
+                if(temp==words[i].length())
+                    l.add(i);
+            }
+             else  if(third.contains(""+Character.toLowerCase(words[i].charAt(0))))
+            {
+                temp=0;
+                for(int j=0;j<words[i].length();j++){
+                if(third.contains(""+Character.toLowerCase(words[i].charAt(j))))
+                {
+                   temp++; 
+                }
+                    else{
+                        temp=0;
+                        break;}
+             }
+                if(temp==words[i].length())
+                    l.add(i);
+            }
+            
+        }
+        
+        String [] output=new String[l.size()];
+        for(int k=0;k<l.size();k++){
+            output[k]=words[l.get(k)];
+        }
+        
+        return output;
+    }
+}
