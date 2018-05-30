@@ -1,4 +1,67 @@
 
+//Approach :- store the indexes in hashmap after sorting fetch them and store in output 
+//OPTIMAL
+
+class Solution {
+    public String[] findRelativeRanks(int[] nums) {
+        Map<Integer,Integer>temp=new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            temp.put(nums[i],i);
+        }
+        Arrays.sort(nums);
+        int count=nums.length;
+        String [] output=new String[nums.length];
+        if(nums.length==0)
+            return output;
+        for(int i=0;i<nums.length-3;i++){
+          output[temp.get(nums[i])]=String.valueOf(count--);
+        }
+        
+        if(nums.length-1>=0)
+        output[temp.get(nums[nums.length-1])]="Gold Medal";
+        
+        if(nums.length-2>=0)
+        output[temp.get(nums[nums.length-2])]="Silver Medal";
+        
+        if(nums.length-3>=0)
+        output[temp.get(nums[nums.length-3])]="Bronze Medal";
+        
+        return output;
+    }
+}
+----------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Approach:- Not optimal store the elments in hash and after sorting store them in array list and fetch
 
 
