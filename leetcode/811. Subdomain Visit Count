@@ -1,0 +1,39 @@
+class Solution {
+    public List<String> subdomainVisits(String[] nums) {
+     
+        List<String>output=new ArrayList<String>();
+        if(nums.length==0)
+            return output;
+        Map<String,Integer>map=new HashMap<String,Integer>();
+        String temp=""; 
+        String p="";
+        for(int i=0;i<nums.length;i++){ 
+        String []total=nums[i].split(" ");
+        int count=Integer.parseInt(total[0]);    
+        temp=total[1];
+            String website[]=temp.split("\\.");
+          p=temp;
+            for(int j=0;j<website.length;j++){
+                if(map.containsKey(p)){
+                 map.put(p,map.get(p)+count);
+                 }
+                else
+                map.put(p,count);
+            
+                p=p.replace(website[j]+".","");   
+          // System.out.println(p);
+                
+            
+            } 
+            }
+        
+         Iterator it = map.entrySet().iterator();
+         while (it.hasNext()) {
+          Map.Entry pair = (Map.Entry)it.next();
+             String tp=String.valueOf(pair.getValue())+" "+String.valueOf(pair.getKey());
+            output.add(tp);
+         }
+        Collections.sort(output);
+        return output;
+    }
+}
