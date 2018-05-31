@@ -1,0 +1,62 @@
+class Solution {
+    public int[][] generateMatrix(int p) {
+   
+ int [][] output=new int[p][p];        
+        if(p==0)
+           return output;
+        int m=p;
+        int n=p;
+        int x=0;
+        int y=0;
+        int count=1;
+        while(m>0 && n>0){
+            
+            if(m==1){
+            for(int i=0;i<n;i++){
+                output[x++][y]=count++;
+               // output.add(nums[x][y++]);
+             }
+                return output;
+            }else if(n==1){
+                for(int i=0;i<m;i++){
+                    output[x++][y]=count++;
+               // output.add(nums[x++][y]);
+             }   
+                return output;
+            }
+            
+            
+            //top right
+            for(int i=0;i<n-1;i++){
+                output[x][y++]=count++;
+                //output.add(nums[x][y++]);
+            }
+            
+            //bottom
+            for(int i=0;i<m-1;i++){
+                output[x++][y]=count++;
+               // output.add(nums[x++][y]);     
+            }
+            
+            //left
+            for(int i=0;i<n-1;i++){
+                output[x][y--]=count++;
+                //output.add(nums[x][y--]);     
+            }
+            
+            //top
+             for(int i=0;i<m-1;i++){
+                 output[x--][y]=count++;
+                //output.add(nums[x--][y]);     
+            }
+            // as two rows and two cols are done for one circle
+            m=m-2;
+            n=n-2;
+            //go inner
+            x++;
+            y++;
+        }
+        
+        return output;
+    }
+}
