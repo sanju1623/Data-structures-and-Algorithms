@@ -1,0 +1,29 @@
+class Solution {
+    public boolean canPermutePalindrome(String s) {
+     //store the string char ascii into int array and increament their values
+     //Optimal   
+        
+        int[] nums=new int[256];
+        int count=0;
+        for(int i=0;i<s.length();i++){
+            nums[s.charAt(i)]++;
+        }
+        int no=0;
+        for(int i=0;i<256;i++){
+            if(nums[i]<2 && nums[i]!=0)
+            {
+                no++;
+                if(no>1)
+                return false;
+            }
+            if(nums[i]%2==0)
+                count=count+nums[i];
+            else
+                count=count+nums[i]-1;
+        }
+        if(s.length()-count>1)
+        return false;
+        
+        return true;
+    }
+}
