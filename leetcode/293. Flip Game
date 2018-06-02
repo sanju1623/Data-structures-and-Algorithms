@@ -1,0 +1,12 @@
+class Solution {
+    public List<String> generatePossibleNextMoves(String s) {
+        List<String>output=new ArrayList<String>();
+        for(int i=0;i+1<s.length();i++){
+            if(s.substring(i,i+2).equals("++"))
+            {
+                output.add(s.substring(0,i)+"--"+s.substring(i+2));
+            }
+        }
+        return output;
+    }
+}
