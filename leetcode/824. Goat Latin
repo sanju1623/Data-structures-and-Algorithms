@@ -1,0 +1,22 @@
+class Solution {
+    public String toGoatLatin(String S) {
+        String []temp=S.split(" ");
+        String output="";
+        if(S.length()==0)
+            return output;
+        for(int i=0;i<temp.length;i++){
+         String t=temp[i];
+            char p=Character.toLowerCase(t.charAt(0));
+            if(p=='a'|| p=='e'||p=='i'||p=='o'||p=='u')
+             output=output+t+"ma";
+            else {
+                output=output+t.substring(1)+t.charAt(0)+"ma";
+            }
+            for(int k=0;k<i+1;k++)
+            output=output+"a";
+            if((i+1<temp.length))
+            output=output+" ";
+        }
+        return output;
+    }
+}
