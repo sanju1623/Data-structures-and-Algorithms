@@ -1,0 +1,33 @@
+Binary Tree Traversal
+
+//Pre order
+void preOrder(Node node){
+if(node!=null){
+System.out.println(node.data);
+preOrder(node.left);
+preOder(node.right);
+}
+}
+
+
+//post order
+void postOrder(Node node){
+if(node!=null){
+postOrder(node.left);
+postOder(node.right);
+System.out.println(node.data);
+}
+}
+
+//in order
+void inOrder(Node node){
+if(node!=null){
+inOrder(node.left);
+System.out.println(node.data);
+inOder(node.right);
+}
+}
+
+
+
+
