@@ -1,0 +1,79 @@
+// A recursive Java program to calculate the size of the tree
+
+//some part took form Geeksforgeeks
+
+/* Class containing left and right child of current
+node and key value*/
+class Node
+{
+	int data;
+	Node left, right;
+
+	public Node(int item)
+	{
+		data = item;
+		left = right = null;
+	}
+}
+
+/* Class to find size of Binary Tree */
+class BinaryTree
+{
+	Node root;
+
+	/* Given a binary tree. Print its nodes in level order
+	using array for implementing queue */
+	
+	
+	void roottoleafsum(){
+	    List<Integer>temp=new ArrayList<>();
+	    System.out.println(roottoleafsum(root,8,temp));
+	    System.out.println("The path is");
+	    for(int i=0;i<temp.size();i++){
+	        System.out.println(temp.get(i));
+	    }
+	    
+	}
+	
+	boolean roottoleafsum(Node root,int sum,List<Integer> output){
+	    if(root==null)
+	    return false;
+	    if(root.left==null && root.right==null){
+	        if(root.key==sum)
+	        {
+	         output.add(root.key);
+	        return true;
+	        }
+	        else
+	        return false;
+	    }
+	    
+	    if(roottoleafsum(root.left,sum-root.key,output))
+	    {
+	        output.add(root.key);
+	        return true;
+	    }
+	    
+	    if(roottoleafsum(root.right,sum-root.key,output))
+	    {
+	        output.add(root.key);
+	        return true;
+	    }
+	    
+	}
+	
+	
+
+	public static void main(String args[])
+	{
+		/* creating a binary tree and entering the nodes */
+		BinaryTree tree = new BinaryTree();
+		tree.root = new Node(1);
+		tree.root.left = new Node(2);
+		tree.root.right = new Node(3);
+		tree.root.left.left = new Node(4);
+		tree.root.left.right = new Node(5);
+
+							tree.roottoleafsum();
+	}
+}
