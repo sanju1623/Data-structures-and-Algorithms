@@ -1,0 +1,13 @@
+//Writing only search function
+
+Node Search(Node node,int k){
+if(node==null)
+return null;
+if(node.data==k)
+return node;
+else if(node.data<k)
+search(node.right,k);
+else
+search(node.left,k);
+ }
+}
