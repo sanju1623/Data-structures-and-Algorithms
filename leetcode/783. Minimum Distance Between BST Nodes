@@ -1,0 +1,35 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+
+//Approach Inorder traversal so that BST values will be sorted just track the previous value
+//and find difference and return.
+
+class Solution {
+    int min=Integer.MAX_VALUE;
+    TreeNode prev=null; 
+    public int minDiffInBST(TreeNode root) {
+    
+        check(root);
+     return min;   
+    }
+    
+    public void check(TreeNode root){
+        
+        if(root ==null)
+            return ;
+        check(root.left);
+        if(prev!=null){
+            min=Math.min(min,root.val-prev.val);
+        }
+        prev=root;
+        check(root.right);
+    }
+    
+}
