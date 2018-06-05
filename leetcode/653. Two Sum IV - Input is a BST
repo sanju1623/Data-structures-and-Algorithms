@@ -1,0 +1,33 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+ 
+ //Approach use a list and store the diff
+ //next time try without list
+ 
+class Solution {
+    public boolean findTarget(TreeNode root, int k) {
+     List<Integer>m=new ArrayList<Integer>();
+        return preorder(root,m,k);
+    }
+public boolean preorder(TreeNode root,List m,int k)
+{
+    if(root==null)
+        return false;
+    if(m.contains(root.val))
+    {
+       return true;
+    }
+        m.add(k-root.val);
+    
+    return preorder(root.left,m,k)||preorder(root.right,m,k);
+}
+ 
+
+}
