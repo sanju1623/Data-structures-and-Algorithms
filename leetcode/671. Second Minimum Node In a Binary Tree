@@ -1,0 +1,36 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+ //try without list next time
+ 
+ 
+class Solution {
+    public int findSecondMinimumValue(TreeNode root) {
+       List<Integer>temp=new ArrayList<Integer>();
+        check(root,temp);
+        if(temp.size()<2)
+            return -1;
+        else
+        {
+         Collections.sort(temp);   
+        }
+            return temp.get(1);
+        }
+    
+    
+    public void check(TreeNode node,List<Integer> temp){
+        if(node==null)
+        return ;
+       check(node.left,temp);
+        if(!temp.contains(node.val))
+        temp.add(node.val);
+       check(node.right,temp);  
+    }
+    
+}
