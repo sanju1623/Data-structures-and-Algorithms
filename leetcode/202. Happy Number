@@ -1,0 +1,23 @@
+//NOT OPTIMAL SOLUTION
+
+class Solution {
+    public boolean isHappy(int n) {
+        if(n==1 || n==7)
+            return true;
+        Map<Character,Integer>map=new HashMap<>();
+        map.put('1',1);
+        map.put('2',4);map.put('4',16);map.put('6',36);map.put('8',64);map.put('9',81);map.put('0',0);
+        map.put('3',9);map.put('5',25);map.put('7',49);
+        String temp=String.valueOf(n);
+       while(temp.length()>1){
+          int k=0;
+           for(int i=0;i<temp.length();i++){
+               k=k+map.get(temp.charAt(i));
+           }
+           temp=String.valueOf(k);
+       } 
+       if(Integer.valueOf(temp)==1 || Integer.valueOf(temp)==7)
+        return true;
+        return false;
+    }
+}
