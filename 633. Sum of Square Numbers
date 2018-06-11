@@ -1,0 +1,22 @@
+class Solution {
+    public boolean judgeSquareSum(int c) {
+     //approach - two pointers start and sqrt of number and check
+        
+        
+        
+        int i=0,j=(int)Math.sqrt(c);
+        int temp=0;
+        while(i<=j){
+            temp=i*i + j*j;
+            if(temp==c )
+            return true;
+            else if(temp<c){
+                i++;
+            }else
+                j--;
+                
+        }
+        
+        return false;
+    }
+}
