@@ -1,0 +1,25 @@
+830. Positions of Large Groups
+class Solution {
+    public List<List<Integer>> largeGroupPositions(String S) {
+        List<List<Integer>>output=new ArrayList<>();
+        for(int i=0;i<S.length();i++){
+            List<Integer>l=new ArrayList<Integer>();
+           int temp=0,j=i+1;
+            for(j=i;j<S.length();j++){
+               if(S.charAt(i)==S.charAt(j))
+                temp++;   
+                else
+                break;
+           }
+            if(temp>=3){
+                l.add(i);
+                l.add(j-1);
+                output.add(l);
+                i=j-1;
+            } 
+            
+        }
+        
+        return output;
+    }
+}
