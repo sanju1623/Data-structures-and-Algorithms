@@ -1,0 +1,25 @@
+class Solution {
+    public int countPrimeSetBits(int L, int R) {
+    int count=0;
+        for(int i=L;i<=R;i++){
+            int t=Integer.bitCount(i);
+            boolean isPrime=true;
+            if(t==1)
+            isPrime=false;
+            for(int p=2;p<=t/2;p++)
+{
+   int temp=t%p;
+   if(temp==0)
+   {
+      isPrime=false;
+      break;
+   }
+}
+            if(isPrime)
+            count++;
+            
+        }
+    return count;
+    }
+    
+}
