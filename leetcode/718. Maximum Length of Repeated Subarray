@@ -1,0 +1,28 @@
+class Solution {
+    public int findLength(int[] A, int[] B) {
+    
+        if(A==B)
+            return A.length;
+       int [][]a=new int[A.length+1][B.length+1];
+        int out=0;
+        int i=0,k=0;
+        for(i=A.length-1;i>=0;i--)
+        {
+         for(k=B.length-1;k>=0;k--)
+         {
+            if(A[i]==B[k]){
+             a[i][k]=a[i+1][k+1]+1;
+              out=Math.max(out,a[i][k]);  
+            }
+         }
+        }
+        
+        
+        
+    
+    return out;
+    }
+
+    
+        
+    }
