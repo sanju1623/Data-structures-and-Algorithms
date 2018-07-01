@@ -1,0 +1,18 @@
+
+
+
+class Solution {
+    public boolean repeatedSubstringPattern(String s) {   
+        for(int i=s.length()/2;i>0;i--){
+           //imp step mode with i so it should add that many values to the temp
+            if(s.length()%i==0)
+            {
+            String temp=s;
+                temp=temp.replace(s.substring(0,i),"");    
+                if(i!=0 && temp.equals(""))
+                    return true;
+            }
+        }
+    return false;
+    }
+}
