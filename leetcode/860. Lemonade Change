@@ -1,0 +1,36 @@
+class Solution {
+    public boolean lemonadeChange(int[] bills) {
+        int sum[]=new int[3];
+        for(int i=0;i<bills.length;i++){
+            
+            if(bills[i]==5)
+                sum[0]++;
+            else if(bills[i]==10){
+                sum[1]++;
+                sum[0]--;
+                if(sum[0]<0)
+                    return false;
+            }
+            else{
+               sum[2]++;
+               if(sum[1]>0 && sum[0]>=0){
+                   sum[1]--;
+                   sum[0]--;
+                if(sum[0]<0 || sum[1]<0)
+                    return false;
+               } else if(sum[1]==0){
+                   sum[0]=sum[0]-3;
+               
+                if(sum[0]<0)
+                    return false;
+               }
+             }
+        
+            //System.out.println(sum[0]+" "+sum[1]+" "+sum[2]);
+        if (sum[0]<0 || sum[1]<0)
+            return false;
+        
+        }
+        return true;
+    }
+}
