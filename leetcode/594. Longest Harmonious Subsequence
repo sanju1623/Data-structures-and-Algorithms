@@ -1,0 +1,26 @@
+class Solution {
+    public int findLHS(int[] nums) {
+        HashMap<Integer,Integer>map=new HashMap<Integer,Integer>();
+        ArrayList<Integer>list=new ArrayList<Integer>();
+        for(int i=0;i<nums.length;i++){
+            if(map.containsKey(nums[i]))
+             map.put(nums[i],map.get(nums[i])+1);
+            else
+            {
+                list.add(nums[i]);
+                map.put(nums[i],1);   
+            }
+        }
+        
+        int output=Integer.MIN_VALUE;
+        for(int i=0;i<list.size();i++){
+          if(map.containsKey(list.get(i)+1)){      
+              output=Math.max(output,map.get(list.get(i))+map.get(list.get(i)+1));
+          }
+        }
+        if(output==Integer.MIN_VALUE)
+            return 0;
+        return output;
+        
+    }
+}
