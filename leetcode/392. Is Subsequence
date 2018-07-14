@@ -1,0 +1,17 @@
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        int prev=0,cur=0;
+        for(int i=0;i<s.length();i++){
+            cur=t.indexOf(s.charAt(i));
+            if(cur==-1)
+                return false;
+            prev=prev+cur;
+            t=t.substring(cur+1);
+        }
+        
+    
+        
+        return true;
+        
+    }
+}
