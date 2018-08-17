@@ -1,0 +1,28 @@
+118. Pascal's Triangle
+
+
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+     
+        List<List<Integer>> output = new ArrayList<List<Integer>>();
+        if(numRows==0)
+            return output;
+        List<Integer>first=new ArrayList<>();
+        first.add(1);
+        output.add(first);
+        for(int i=2;i<=numRows;i++){
+          List<Integer>temp=new ArrayList<>();
+          List<Integer>temp1=output.get(i-2);
+            for(int k=0;k<i;k++)
+                temp.add(1);
+            for(int j=1;j<i-1;j++){
+                temp.set(j,temp1.get(j-1)+temp1.get(j));
+            }
+            output.add(temp);
+        }
+        
+        
+        
+        return output;
+    }
+}
