@@ -1,0 +1,85 @@
+// A Java program for Dijkstra's single source shortest path algorithm. 
+// The program is for adjacency matrix representation of the graph 
+import java.util.*; 
+import java.lang.*; 
+import java.io.*; 
+  
+public class ShortestPath 
+{
+    
+    void dijkstra(int graph[][], int src) 
+    { 
+      
+      // total number of vertices
+      int v=graph.length;
+      
+      // track of visited nodes
+      boolean visited[]=new boolean[v];
+      
+      // keep the distance form the source 
+      int distance[]=new int[v];
+      // initialize all the distances from source to max;
+      for(int i=1;i<v;i++)
+      distance[i]=Integer.MAX_VALUE;
+      
+      
+      
+     for(int i=0;i<v-1;i++)
+     {
+                     //this will return the vertix with
+                       //min distance
+         int minIndex=minIndex(distance,visited);
+         visited[minIndex]=true;
+         //explore its neighbours
+         for(int j=0;j<v;j++)
+         {
+             
+             if(!visited[j] && (graph[minIndex][j]!=0))
+               {
+                   distance[j]=Math.min(distance[j],distance[minIndex]+
+                   graph[minIndex][j]);
+               }
+             
+         }
+     }
+     
+     for(int i=0;i<v;i++)
+     System.out.println(i+"--"+ distance[i]);
+      
+    } 
+    
+    public int minIndex(int []distance,boolean visited[])
+    {
+        
+        int minvertix=-1;
+        for(int i=0;i<distance.length;i++)
+        {
+            if(!visited[i] && (minvertix==-1 || 
+            distance[i]<distance[minvertix]))
+            {
+                minvertix=i;
+            }
+        }
+        
+        return minvertix;
+    }
+  
+    // Driver method 
+    public static void main (String[] args) 
+    { 
+        /* Let us create the example graph discussed above */
+       int graph[][] = new int[][]{{0, 4, 0, 0, 0, 0, 0, 8, 0}, 
+                                  {4, 0, 8, 0, 0, 0, 0, 11, 0}, 
+                                  {0, 8, 0, 7, 0, 4, 0, 0, 2}, 
+                                  {0, 0, 7, 0, 9, 14, 0, 0, 0}, 
+                                  {0, 0, 0, 9, 0, 10, 0, 0, 0}, 
+                                  {0, 0, 4, 14, 10, 0, 2, 0, 0}, 
+                                  {0, 0, 0, 0, 0, 2, 0, 1, 6}, 
+                                  {8, 11, 0, 0, 0, 0, 1, 0, 7}, 
+                                  {0, 0, 2, 0, 0, 0, 6, 7, 0} 
+                                 }; 
+        ShortestPath t = new ShortestPath(); 
+        t.dijkstra(graph, 7); 
+    } 
+} 
+//This code is contributed by Aakash Hasija 
